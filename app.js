@@ -303,6 +303,23 @@ function navigateToPage(pageId) {
   if (activeSec) activeSec.classList.add('active');
   
   addLogLine('INFO', `Navigated to dashboard view: ${pageId.toUpperCase()}`);
+
+  // Automatically dismiss sidebar drawer on mobile after navigation selection
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (sidebar && sidebar.classList.contains('open')) {
+    sidebar.classList.remove('open');
+  }
+  if (overlay && overlay.classList.contains('active')) {
+    overlay.classList.remove('active');
+  }
+}
+
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (sidebar) sidebar.classList.toggle('open');
+  if (overlay) overlay.classList.toggle('active');
 }
 
 function changeElectionStatus(state) {

@@ -38,6 +38,8 @@ jobs:
           cp index.html dist/
           cp style.css dist/
           cp app.js dist/
+          # Copy logo image to build output if present
+          if [ -f logo.png ]; then cp logo.png dist/; fi
           
           # Inject environment/secret configurations into runtime config.json
           echo '{

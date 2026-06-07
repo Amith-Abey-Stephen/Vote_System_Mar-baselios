@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VTIC Smart School Election Dashboard</title>
+  <title>Mar Baselios Public School Election Dashboard</title>
   <link rel="stylesheet" href="style.css?v">
+  <link rel="shortcut icon" href="logo.png" type="image/png">
   <!-- Firebase SDK CDNs -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
@@ -15,9 +16,9 @@
   <!-- Login Screen Overlay -->
   <div id="login-screen" class="login-overlay" style="display: none;">
     <div class="login-card">
-      <div class="login-header">
-        <h2>VTIC SMART</h2>
-        <p>School Election Admin Login</p>
+      <div class="login-header" style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 20px;">
+        <img src="logo.png" alt="Mar Baselios Public School Logo" style="height: 56px; width: auto; object-fit: contain;">
+        <p style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 8px;">Smart School Election Admin Login</p>
       </div>
       <div id="login-error-msg" class="login-error" style="display: none;"></div>
       <form id="login-form" onsubmit="handleLogin(event)">
@@ -65,15 +66,14 @@
       <button class="hamburger-btn" onclick="toggleSidebar()">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
-      <div class="mobile-title">VTIC SMART CONTROL</div>
+      <div class="mobile-title">MAR BASELIOS PUBLIC SCHOOL</div>
       <div style="width: 32px;"></div> <!-- Spacer to center title -->
     </header>
     
     <!-- Left Sidebar Navigation -->
     <aside class="sidebar">
-      <div class="sidebar-brand">
-        <h2>VTIC SMART</h2>
-        <p>School Election Control</p>
+      <div class="sidebar-brand" style="display: flex; align-items: center; justify-content: center; padding: 20px 16px; border-bottom: 1px solid var(--border-color); background: #ffffff;">
+        <img src="logo.png" alt="Mar Baselios Public School Logo" style="max-height: 40px; max-width: 100%; object-fit: contain;">
       </div>
       
       <nav class="sidebar-menu">
@@ -241,9 +241,9 @@
 
   <!-- Print Certificate Container -->
   <div id="print-certificate-container">
-    <div class="cert-title">VTIC School Election Winners Certificate</div>
+    <div class="cert-title">Mar Baselios Public School Election Winners Certificate</div>
     <div class="cert-body">
-      This is to certify and officially declare the elected student leaders of the VTIC Smart School Election System based on the audits conducted in real-time on <span id="cert-date">June 7, 2026</span>.
+      This is to certify and officially declare the elected student leaders of Mar Baselios Public School, Devalokam, based on the audits conducted in real-time on <span id="cert-date">June 7, 2026</span>.
     </div>
     <div class="cert-winner-row">
       <div class="cert-winner-col">
@@ -260,7 +260,7 @@
       </div>
     </div>
     <div class="cert-body" style="font-size: 11px; margin-top: 30px; font-style: italic;">
-      Verification Token: <span id="cert-token">VTIC-OFFICIAL-FIRESTORE-AUDIT-2026</span>
+      Verification Token: <span id="cert-token">MBPS-DEVALOKAM-FIRESTORE-AUDIT-2026</span>
     </div>
   </div>
 

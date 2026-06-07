@@ -182,9 +182,13 @@ function bindFirestoreListeners() {
       updateStandings();
       renderCandidateFields();
     } else {
-      // Document doesn't exist, seed it with default candidates structure
-      db.collection('election').doc('candidates').set(candidates);
-      addLogLine('INFO', 'Seeded initial candidates structure in Firestore.');
+      // Document doesn't exist, seed it with default candidates structure (with 0 votes)
+      const cleanCandidates = JSON.parse(JSON.stringify(candidates));
+      ['hb', 'hg', 'sc'].forEach(role => {
+        cleanCandidates[role].forEach(c => c.votes = 0);
+      });
+      db.collection('election').doc('candidates').set(cleanCandidates);
+      addLogLine('INFO', 'Seeded initial clean candidates structure in Firestore.');
     }
   }, err => addLogLine('ERROR', `Candidates listener failed: ${err.message}`));
 

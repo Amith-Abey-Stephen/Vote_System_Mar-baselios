@@ -114,8 +114,21 @@ function initializeFirebase(config) {
     
     addLogLine('INFO', `Successfully connected to Firestore Project: ${config.projectId}`);
     
-    // Bind Real-time Snapshot listeners
-    bindFirestoreListeners();
+    // Listen for Auth changes
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('signout-btn').style.display = 'block';
+        addLogLine('INFO', `Admin logged in successfully: ${user.email}`);
+        
+        // Bind Real-time Snapshot listeners once authenticated
+        bindFirestoreListeners();
+      } else {
+        document.getElementById('login-screen').style.display = 'flex';
+        document.getElementById('signout-btn').style.display = 'none';
+        addLogLine('WARN', 'Admin access required. Please sign in.');
+      }
+    });
   } catch (err) {
     console.error("Firebase init failed", err);
     addLogLine('ERROR', `Firebase connection failed: ${err.message}. Falling back to Demo Mode.`);
@@ -125,6 +138,9 @@ function initializeFirebase(config) {
 
 function setupDemoMode() {
   isDemoMode = true;
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('signout-btn').style.display = 'none';
+  
   const badge = document.getElementById('connection-status-badge');
   badge.textContent = 'Demo Mode';
   badge.className = 'badge-demo';
@@ -507,4 +523,46 @@ function generateWinnersCertificate() {
   }, 1000);
   
   addLogLine('INFO', 'Generated print cert for winners.');
+}
+
+// --- AUTHENTICATION HANDLERS ---
+function handleLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const errorMsgDiv = document.getElementById('login-error-msg');
+  
+  errorMsgDiv.style.display = 'none';
+  
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(err => {
+      console.error("Login failed:", err);
+      errorMsgDiv.textContent = `Login failed: ${err.message}`;
+      errorMsgDiv.style.display = 'block';
+    });
+}
+
+function handleGoogleLogin() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  const errorMsgDiv = document.getElementById('login-error-msg');
+  errorMsgDiv.style.display = 'none';
+  
+  firebase.auth().signInWithPopup(provider)
+    .catch(err => {
+      console.error("Google sign in failed:", err);
+      errorMsgDiv.textContent = `Google sign in failed: ${err.message}`;
+      errorMsgDiv.style.display = 'block';
+    });
+}
+
+function handleSignOut() {
+  firebase.auth().signOut()
+    .then(() => {
+      addLogLine('INFO', 'Admin signed out successfully.');
+      window.location.reload();
+    })
+    .catch(err => {
+      console.error("Sign out failed:", err);
+      addLogLine('ERROR', `Sign out failed: ${err.message}`);
+    });
 }

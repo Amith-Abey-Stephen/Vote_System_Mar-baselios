@@ -1,5 +1,7 @@
 # VTIC Smart School Election System
 
+*Developed & Powered by [CircuitBay](https://circuitbay.org/)*
+
 A production-ready school election voting system utilizing physical ESP32 voting terminals synchronized in real-time with a light-themed, non-technical web administration console using Google Firebase Firestore.
 
 ---
@@ -97,6 +99,21 @@ This project includes a CI/CD workflow that automatically injects your credentia
    * `FIREBASE_AUTH_DOMAIN`
    * `FIREBASE_PROJECT_ID`
 3. Push to your `main` or `master` branch. The action will build the deployment assets under `dist/`, create the `config.json` file dynamically, and publish it automatically.
+
+### Firebase Authentication (Admin Login Setup)
+To protect your production administrative dashboard from unauthorized access, configure one or both of the supported sign-in providers in your Firebase console:
+
+#### Option A: Email & Password
+1. Open the [Firebase Console](https://console.firebase.google.com/) and navigate to your project.
+2. Click **Authentication** in the left sidebar, and click **Get Started**.
+3. Under the **Sign-in method** tab, click **Add new provider** and select **Email/Password**.
+4. Enable the **Email/Password** toggle and click **Save**.
+5. Go to the **Users** tab, click **Add user**, and register an email address (e.g. `admin@vtic.edu.in`) and a secure password.
+
+#### Option B: Google Sign-In
+1. In the **Sign-in method** tab of the Firebase Authentication console, click **Add new provider** and select **Google**.
+2. Enable the toggle, fill in the **Project support email** dropdown, and click **Save**.
+3. *Note: Ensure your web dashboard domain (like your GitHub Pages URL) is added to the **Authorized domains** list located at the bottom of the Sign-in method settings tab.*
 
 ---
 

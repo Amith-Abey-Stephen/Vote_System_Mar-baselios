@@ -1,6 +1,6 @@
 # VTIC Smart School Election System
 
-*Developed & Powered by [CircuitBay](https://circuitbay.org/)*
+*Developed & Powered by [CircuitBay](https://circuitbay.in/)*
 
 A production-ready school election voting system utilizing physical ESP32 voting terminals synchronized in real-time with a light-themed, non-technical web administration console using Google Firebase Firestore.
 

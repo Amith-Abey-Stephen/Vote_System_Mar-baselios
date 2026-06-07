@@ -141,7 +141,7 @@ void sendHeartbeatTelemetry() {
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("Starting VTIC Smart School Election Terminal...");
+  Serial.println("Starting MBPS Smart School Election Terminal...");
 
   // Setup RGB Pins
   pinMode(RGB_RED_PIN, OUTPUT);
@@ -156,7 +156,7 @@ void setup() {
   // Get MAC Address
   macAddress = WiFi.macAddress();
   macAddress.replace(":", "-");
-  macAddress = "VTIC-" + macAddress.substring(9); // e.g. VTIC-AB-CD-EF
+  macAddress = "MBPS-" + macAddress.substring(9); // e.g. MBPS-AB-CD-EF
 
   // Init Modules
   wifiManager.begin();

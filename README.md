@@ -1,8 +1,8 @@
-# VTIC Smart School Election System
+# Mar Baselios Public School Election System
 
 *Developed & Powered by [CircuitBay](https://circuitbay.in/)*
 
-A production-ready school election voting system utilizing physical ESP32 voting terminals synchronized in real-time with a light-themed, non-technical web administration console using Google Firebase Firestore.
+A production-ready school election voting system utilizing physical ESP32 voting terminals synchronized in real-time with a light-themed, non-technical web administration console using Google Firebase Firestore. Customized for Mar Baselios Public School, Devalokam.
 
 ---
 
@@ -56,13 +56,13 @@ An audit trail where votes are recorded. Each document represents a single submi
     "headBoy": "candidate3",
     "headGirl": "candidate1",
     "sportsCaptain": "candidate4",
-    "deviceId": "VTIC-AB-CD-EF",
+    "deviceId": "MBPS-AB-CD-EF",
     "timestamp": 1740000000
   }
   ```
 
 ### 4. `/devices/{deviceId}`
-Telemetry and state monitoring for active physical terminals.
+Tracks telemetry and status monitoring for active physical terminals.
 * **Format:**
   ```json
   {
@@ -70,7 +70,7 @@ Telemetry and state monitoring for active physical terminals.
     "lastActive": 1740000300,
     "pendingVotes": 0,
     "ipAddress": "192.168.1.144",
-    "ssid": "VTIC-WLAN-SECURE"
+    "ssid": "MBPS-WLAN-SECURE"
   }
   ```
 
@@ -108,7 +108,7 @@ To protect your production administrative dashboard from unauthorized access, co
 2. Click **Authentication** in the left sidebar, and click **Get Started**.
 3. Under the **Sign-in method** tab, click **Add new provider** and select **Email/Password**.
 4. Enable the **Email/Password** toggle and click **Save**.
-5. Go to the **Users** tab, click **Add user**, and register an email address (e.g. `admin@vtic.edu.in`) and a secure password.
+5. Go to the **Users** tab, click **Add user**, and register an email address (e.g. `admin@marbaselios.edu.in` or any valid admin email) and a secure password.
 
 #### Option B: Google Sign-In
 1. In the **Sign-in method** tab of the Firebase Authentication console, click **Add new provider** and select **Google**.
@@ -139,7 +139,7 @@ The ESP32 pins are configured in [**`firmware/vtic_voting_machine/config.h`**](f
 
 ### 3. Captive Portal (Initial WLAN Setup)
 * On first start, or when holding the **Config** button for 5 seconds, the terminal enters Setup Mode.
-* Connect your phone or laptop to the wireless network: **`VTIC-VOTING-SETUP`**.
+* Connect your phone or laptop to the wireless network: **`MBPS-VOTING-SETUP`**.
 * A portal will automatically open (or navigate to `http://192.168.4.1`).
 * Select your Wi-Fi SSID, enter your password, input your Firebase Project credentials, and click **Save & Restart**.
 

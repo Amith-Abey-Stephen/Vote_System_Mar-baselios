@@ -24,13 +24,13 @@ private:
   void handleRoot() {
     String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'>";
     html += "<meta name='viewport' content='width=device-width,initial-scale=1'>";
-    html += "<title>VTIC Terminal Setup</title>";
+    html += "<title>MBPS Terminal Setup</title>";
     html += "<style>body{font-family:sans-serif;background:#f1f5f9;margin:0;padding:20px;display:flex;justify-content:center;}";
     html += ".card{background:#fff;padding:24px;border-radius:10px;box-shadow:0 4px 6px rgba(0,0,0,0.05);max-width:400px;width:100%;}";
     html += "h2{margin-top:0;color:#1e293b;}input{width:100%;padding:10px;margin:8px 0 16px;border:1px solid #cbd5e1;border-radius:6px;box-sizing:border-box;}";
     html += "button{width:100%;padding:12px;background:#1d4ed8;color:#fff;border:none;border-radius:6px;font-weight:bold;cursor:pointer;}";
     html += "button:hover{background:#1e40af;}</style></head><body>";
-    html += "<div class='card'><h2>VTIC WiFi Config</h2>";
+    html += "<div class='card'><h2>MBPS WiFi Config</h2>";
     html += "<form action='/save' method='POST'>";
     html += "<label>WiFi SSID</label><input name='ssid' required placeholder='Enter WLAN SSID'>";
     html += "<label>WiFi Password</label><input name='pass' type='password' placeholder='Leave blank if open'>";
@@ -83,7 +83,7 @@ public:
   void startPortal() {
     configMode = true;
     WiFi.mode(WIFI_AP);
-    WiFi.softAP("VTIC-VOTING-SETUP");
+    WiFi.softAP("MBPS-VOTING-SETUP");
     
     // Redirect all requests to local web server
     dnsServer.start(DNS_PORT, "*", WiFi.softAPIP());

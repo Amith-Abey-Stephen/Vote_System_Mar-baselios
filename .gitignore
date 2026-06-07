@@ -1,0 +1,39 @@
+# Environment files (sensitive credentials)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+
+# Generated runtime configurations
+config.json
+
+# Local distribution / build outputs
+dist/
+build/
+bin/
+
+# IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Arduino/ESP32 build temporary files
+*.elf
+*.bin
+*.hex
+*~

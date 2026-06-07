@@ -89,14 +89,23 @@ async function loadFirebaseConfig() {
   try {
     const response = await fetch('config.json');
     if (response.ok) {
-      const config = await response.json();
+      const text = await response.text();
+      // Resiliently remove literal newlines/carriage returns that break JSON parsing
+      const cleanText = text.replace(/[\n\r]/g, '');
+      const config = JSON.parse(cleanText);
+      
+      // Trim values in case of any trailing spaces or newlines
+      if (config.apiKey) config.apiKey = config.apiKey.trim();
+      if (config.authDomain) config.authDomain = config.authDomain.trim();
+      if (config.projectId) config.projectId = config.projectId.trim();
+      
       if (config.apiKey && config.projectId) {
         initializeFirebase(config);
         return;
       }
     }
   } catch (e) {
-    // Ignore error and fall back
+    console.error("Configuration JSON parsing error:", e);
   }
 
   if (FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId) {

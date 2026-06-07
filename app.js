@@ -62,6 +62,11 @@ function initClock() {
 
 // Write line into event logs monitor
 function addLogLine(level, msg) {
+  const logMsg = `[${level}] ${msg}`;
+  if (level === 'ERROR') console.error(logMsg);
+  else if (level === 'WARN') console.warn(logMsg);
+  else console.log(logMsg);
+
   const consoleLog = document.getElementById('audit-log-console');
   const now = new Date();
   const timeStr = now.toTimeString().split(' ')[0];
